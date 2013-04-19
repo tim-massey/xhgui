@@ -104,9 +104,11 @@ class Xhgui_Profiles
             ),
             array('$sort' => array('_id' => 1))
         ));
-        foreach ($results['result'] as $i => $result) {
-            $results['result'][$i]['date'] = $result['_id'];
-            unset($results['result'][$i]['_id']);
+        if(is_array($results['result'])) {
+        	foreach ($results['result'] as $i => $result) {
+	            $results['result'][$i]['date'] = $result['_id'];
+	            unset($results['result'][$i]['_id']);
+	        }
         }
         return $results['result'];
     }
